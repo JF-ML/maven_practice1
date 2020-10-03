@@ -57,4 +57,16 @@ public class TestDependency {
 		});
 		assertThat(dependency.addTwo(10),is(30));
 	}
+	@Test
+	public void testMultiply() {
+		when(dependency.multiply(anyInt(), anyInt())).thenAnswer(new Answer<Integer>() {
+			public Integer answer(InvocationOnMock invocation) throws Throwable{
+				int arg = (Integer) invocation.getArguments() [0];
+				int arg2 = (Integer) invocation.getArguments() [1];
+				return arg*arg2;
+			}
+		});
+		
+		
+	}
 }

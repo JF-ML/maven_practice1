@@ -17,6 +17,9 @@ public class Dependency {
 	public int addTwo(int i) {
 		return i+2;
 	}
+	public int multiply(int i,int j) {
+		return 0;
+	}
 	public String getClassNameUpperCase() {
 		return getClassName().toUpperCase();
 	}
