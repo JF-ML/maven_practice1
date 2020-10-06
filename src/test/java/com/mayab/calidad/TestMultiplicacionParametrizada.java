@@ -15,7 +15,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class TestMultiplicacionParametrizada {
 
 	@Parameters
-	public static Collection<Object> data() {
+	public static Iterable data() {
 		return Arrays.asList(new Object [][] {
 			{4,2,2},{6,3,2},{5,5,1},{10,5,2}
 		});
@@ -28,7 +28,7 @@ public class TestMultiplicacionParametrizada {
 	public TestMultiplicacionParametrizada(float expected, float multiplierOne, float multiplierTwo) {
 		this.multiplierOne= multiplierOne;
 		this.expected= expected;
-		this.multiplierOne= multiplierTwo;
+		this.multiplierTwo= multiplierTwo;
 	}
 	@Test
 	public void test() {
