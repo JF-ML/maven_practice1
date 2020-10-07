@@ -1,11 +1,14 @@
 package com.mayab.calidad.doubles.tareaUnitTest;
 
+import java.util.HashMap;
+
 public class Account {
 
 	int balance;
     String holder;
     AlertListener alerts;
     int zone;
+    HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
     public Account(String holder, int initialBalance, AlertListener alerts){
         this.holder = holder;
         this.balance = initialBalance;
@@ -36,17 +39,8 @@ public class Account {
     public int getZone() {
     	return this.zone;
     }
-    public float getCommision() {
-    	switch(zone) {
-    	case 1:
-    		return 0.01f;
-		case 2:
-    		return 0.02f;
-    	case 3:
-    		return 0.03f;
-    	default:
-    		return 0;	
-    	}
+    public HashMap<Integer,Integer> getCommision() {
+    	return new HashMap<Integer,Integer>();
     }
     void debit(int balance) {
         this.balance -= balance;

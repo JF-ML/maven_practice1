@@ -13,34 +13,36 @@ import java.util.HashMap;
 import java.util.Map;
 public class TestAnswer {
 
-	HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
+	
 	Account account;
-	int key = 0;
+	int key = 1;
 	@Before
 	public void setupMock() {
 		account = mock(Account.class);
-		map = mock(HashMap.class);
-		when(account.getCommision()).thenReturn(0.01f);
+		
+		when(account.getCommision()).thenReturn(new HashMap<Integer,Integer>());
 	}
 	
 	@Test
 	public void Answer() {
-		when(account.abono(anyInt())).thenAnswer(new Answer<Float>() {
-			public Float answer(InvocationOnMock invocation) throws Throwable{
-				map.put(eq(1), anyInt());
+		when(account.abono(anyInt())).thenAnswer(new Answer<Integer>() {
+			public Integer answer(InvocationOnMock invocation) throws Throwable{
+				Integer balance = (Integer)invocation.getArguments()[0]; 
+				account.getCommision().put(eq(1), balance);
 				
-				return 0f;
+				return balance;
 			}
 		});
 		when(account.calcularComm()).thenAnswer(new Answer<Float>() {
 			public Float answer(InvocationOnMock invocation) throws Throwable{
 				float totalComm=0;
 				
-				for(int i =0; i<map.size();i++) {
-					totalComm += account.getCommision() * map.get(i);
-					System.out.println(map.get(i));
+				for(int i =0; i<account.map.size();i++) {
+					totalComm += account.getCommision().get(key) * 0.01f;
+					
+					System.out.println(account.map.get(i));
 				}
-				for (Map.Entry me : map.entrySet()) {
+				for (Map.Entry me : account.map.entrySet()) {
 			          System.out.println("Key: "+me.getKey() + " & Value: " + me.getValue());
 			        }
 				return totalComm;
@@ -50,7 +52,6 @@ public class TestAnswer {
 		account.abono(200);
 		account.abono(200);
 		
-		System.out.println(account.calcularComm());
 		assertThat(5.0f,is(account.calcularComm()));
 	}
 
