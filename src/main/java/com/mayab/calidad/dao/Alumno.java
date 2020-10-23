@@ -22,6 +22,7 @@ public class Alumno {
 	
 	public Alumno(int n) {
 		this.id=n;
+		this.nombre="user_"+this.id;
 		this.email= "xxx@.com";
 		this.edad = 18;
 		this.promedio = 0.0;
