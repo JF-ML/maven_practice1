@@ -1,5 +1,6 @@
 package com.mayab.calidad.dao;
 
+import java.sql.Connection;
 import java.util.Vector;
 
 public class DAOFake implements DAO {
@@ -31,6 +32,12 @@ public class DAOFake implements DAO {
 		list.set(list.indexOf(n),n);
 		
 		return true;
+	}
+
+	@Override
+	public Connection getConnection() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

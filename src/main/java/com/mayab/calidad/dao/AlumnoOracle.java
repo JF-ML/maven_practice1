@@ -22,7 +22,7 @@ public class AlumnoOracle implements DAO {
 			Connection con = getConnection();
 			
 			PreparedStatement ps = con.prepareStatement(
-					"insert into alumno(id,nombre,edad,promedio,email) values (?,?,?,?,?)");
+					"insert into alumnos(id,nombre,edad,promedio,email) values (?,?,?,?,?)");
 			ps.setInt(1,n.getId());
 			ps.setString(2,n.getNombre());
 			ps.setInt(3,n.getEdad());
@@ -42,7 +42,7 @@ public class AlumnoOracle implements DAO {
 	public boolean deleteAlumno(Alumno n) {
 		// TODO Auto-generated method stub
 		try {
-Connection con = getConnection();
+			Connection con = getConnection();
 			
 			PreparedStatement ps = con.prepareStatement(
 					"Delete From Alumno Where id = ?");
@@ -60,7 +60,20 @@ Connection con = getConnection();
 
 	@Override
 	public boolean updatePromedio(Alumno n, double promedio) {
-		// TODO Auto-generated method stub
+		try {
+			Connection con = getConnection();
+			
+			PreparedStatement ps = con.prepareStatement(
+					"update alumno set promedio  = ? Where id = ?");
+			ps.setDouble(1,promedio);
+			ps.setInt(2,n.getId());
+			
+			
+			int status = ps.executeUpdate();
+			con.close();
+		}catch(Exception ex) {
+			System.out.println(ex);
+		}
 		return false;
 	}
 

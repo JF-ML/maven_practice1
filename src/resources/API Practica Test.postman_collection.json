@@ -1,0 +1,343 @@
+{
+	"info": {
+		"_postman_id": "a4c0182d-a19c-41a2-8722-88b84752253a",
+		"name": "API Practica Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Comprobar Servicio",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45884185-32cd-44c1-a649-69df3b6dd1e0",
+						"exec": [
+							"pm.test('Existe usuario',function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"   \r",
+							"}\r",
+							")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "MyUniqueApiKey",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar usuario",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "fde852e7-8c73-4f57-a495-0e4e108e9bca",
+						"exec": [
+							"let date = Date.now();\r",
+							"let email ='jorge'+date+'@gmail.com';\r",
+							"pm.environment.set('userEmail',email);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "86b4035e-8d76-415b-bc9f-889504b0bdd5",
+						"exec": [
+							"pm.test('Tiene un id',function(){\r",
+							"    const {data} = pm.response.json();\r",
+							"    pm.environment.set('userId',data._id);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"{{userEmail}}\",\r\n    \"password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c44ebeb5-333e-4575-96d2-013136c1fec5",
+						"exec": [
+							"pm.test('Tiene un token',function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"    const {data} = pm.response.json();\r",
+							"    pm.environment.set('token',data.token);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"{{userEmail}}\",\r\n    \"password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/tokens/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"tokens",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear pelicula",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4817c2a8-23a4-42d8-a1c9-fa70d645c3a5",
+						"exec": [
+							"pm.test('Se crea pelicula',function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"   \r",
+							"}\r",
+							")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Transformers\",\r\n    \"year\": \"2007\",\r\n    \"owner\":\"{{userId}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener peliculas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "44de021a-6bef-451c-a664-4a476d36c130",
+						"exec": [
+							"pm.test('Exitse pelicula',function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"    const {data} = pm.response.json();\r",
+							"    pm.expect(data.length).to.eql(1);\r",
+							"}\r",
+							")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear segunda pelicula",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dd6dfd02-0ca7-4aea-8e9e-9125079642af",
+						"exec": [
+							"pm.test('Se crea pelicula',function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"   \r",
+							"}\r",
+							")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Avengers\",\r\n    \"year\": \"20019\",\r\n    \"owner\":\"{{userId}}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener segunda peliculas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b2cb7279-1be1-4d99-bc80-74e979a94186",
+						"exec": [
+							"pm.test('Exitse pelicula otra vez',function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"    const {data} = pm.response.json();\r",
+							"    pm.expect(data.length).to.eqls(2);\r",
+							"}\r",
+							")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
