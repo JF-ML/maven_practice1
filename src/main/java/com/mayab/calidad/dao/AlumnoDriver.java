@@ -14,7 +14,7 @@ public class AlumnoDriver {
 		alumno.addAlumno(a2);
 		alumno.addAlumno(a3);
 		alumno.updatePromedio(a2, 9.9);
-		//alumno.deleteAlumno(a1);
+		//alumno.deleteAlumno(a1.getID());
 	}
 
 }

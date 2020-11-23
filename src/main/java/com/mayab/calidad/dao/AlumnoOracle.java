@@ -9,7 +9,7 @@ public class AlumnoOracle implements DAO {
 		 Connection con=null;  
 	        try{  
 	            Class.forName("oracle.jdbc.driver.OracleDriver");  
-	            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");  
+	            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","dbunit","dbunit");  
 	        }catch(Exception e){System.out.println(e);}  
 	        return con;  
 	}
@@ -22,7 +22,7 @@ public class AlumnoOracle implements DAO {
 			Connection con = getConnection();
 			
 			PreparedStatement ps = con.prepareStatement(
-					"insert into alumnos(id,nombre,edad,promedio,email) values (?,?,?,?,?)");
+					"insert into alumno(id,nombre,edad,promedio,email) values (?,?,?,?,?)");
 			ps.setInt(1,n.getId());
 			ps.setString(2,n.getNombre());
 			ps.setInt(3,n.getEdad());

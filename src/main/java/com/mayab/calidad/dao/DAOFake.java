@@ -21,6 +21,7 @@ public class DAOFake implements DAO {
 	@Override
 	public boolean deleteAlumno(Alumno n) {
 		// TODO Auto-generated method stub
+		
 		list.remove(list.indexOf(n));
 		return true;
 	}
