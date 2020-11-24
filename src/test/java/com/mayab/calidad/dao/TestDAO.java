@@ -43,6 +43,11 @@ public class TestDAO {
 		fake.updatePromedio(a1,9.9);
 		assertThat(9.9,is(a1.getPromedio()));
 	}
+	@Test 
+	public void numberTest() {
+		int n = fake.numberAlumno();
+		assertThat(1,is(n));
+	}
 	/*
 	addAlumno
 	

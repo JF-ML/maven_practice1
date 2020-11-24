@@ -142,6 +142,20 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		connection.close();	
 	}
 	
+	@Test
+	public void testNumber() throws Exception {
+		IDatabaseConnection connection= getConnection();
+		AlumnoOracle alumno = new AlumnoOracle();
+		int n = alumno.numberAlumno();
+		
+		
+		
+		assertEquals(n, connection.getRowCount("alumno"));
+		
+		connection.close();	
+	}
+	
+	
 	@Override
 	protected IDataSet getDataSet() throws Exception {
 		// TODO Auto-generated method stub

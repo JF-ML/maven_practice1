@@ -11,7 +11,7 @@ public interface DAO {
 	public boolean addAlumno(Alumno n);
 	public boolean deleteAlumno(Alumno n);
 	public boolean updatePromedio(Alumno n,double promedio);
-	
+	public int numberAlumno();
 	
 	public Connection getConnection();
 }

@@ -41,6 +41,12 @@ public class DAOFake implements DAO {
 		return null;
 	}
 
+	@Override
+	public int numberAlumno() {
+		
+		return list.size();
+	}
+
 
 
 }

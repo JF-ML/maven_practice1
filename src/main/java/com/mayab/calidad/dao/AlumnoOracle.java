@@ -77,4 +77,26 @@ public class AlumnoOracle implements DAO {
 		return false;
 	}
 
+	@Override
+	public int numberAlumno() {
+		// TODO Auto-generated method stub
+		int n = 0;
+		try {
+			Connection con = getConnection();
+			Statement statement = con.createStatement();
+			ResultSet result = statement.executeQuery("SELECT COUNT(*) AS count FROM alumno");
+			
+			while(result.next()){
+				n = result.getInt("count");
+				
+			}
+			
+			con.close();
+			
+		}catch(Exception ex) {
+			System.out.println(ex);
+		}
+		return n;
+	}
+
 }
