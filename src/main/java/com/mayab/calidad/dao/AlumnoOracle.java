@@ -1,6 +1,7 @@
 package com.mayab.calidad.dao;
 
 import java.sql.DriverManager;
+import java.util.Vector;
 import java.sql.*;
 public class AlumnoOracle implements DAO {
 
@@ -97,6 +98,39 @@ public class AlumnoOracle implements DAO {
 			System.out.println(ex);
 		}
 		return n;
+	}
+
+	@Override
+	public Vector<Alumno> getAll() {
+		Vector<Alumno> list = new Vector<Alumno>();
+		try {
+			Connection con = getConnection();
+			Statement statement = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet result = statement.executeQuery("SELECT * FROM alumno");
+			result.last();
+			int size = result.getRow();
+			result.first();
+			
+            
+            for(int i = 0; i < size; i ++) {
+            	list.add(new Alumno());
+	            	if(result.next())
+	            	{
+		            	list.get(i).setId(result.getInt("id"));
+		            	list.get(i).setNombre(result.getString("nombre"));
+		            	list.get(i).setEdad(result.getInt("edad"));
+		            	list.get(i).setPromedio(result.getFloat("promedio"));
+		    			list.get(i).setEmail(result.getString("email"));
+		    			
+	            	}
+        	}
+			
+			con.close();
+			
+		}catch(Exception ex) {
+			System.out.println(ex);
+		}
+		return list;
 	}
 
 }

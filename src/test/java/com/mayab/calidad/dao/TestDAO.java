@@ -6,6 +6,7 @@ import static org.mockito.Matchers.*;
 
 import java.awt.List;
 import java.util.HashMap;
+import java.util.Vector;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -47,6 +48,12 @@ public class TestDAO {
 	public void numberTest() {
 		int n = fake.numberAlumno();
 		assertThat(1,is(n));
+	}
+	@Test
+	public void getAllTest() {
+		Vector<Alumno> list = fake.getAll();
+		assertThat(a1.getId(),is(list.get(list.indexOf(a1)).getId()));
+		assertThat(a1.getNombre(),is(list.get(list.indexOf(a1)).getNombre()));
 	}
 	/*
 	addAlumno

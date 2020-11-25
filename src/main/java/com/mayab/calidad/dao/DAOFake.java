@@ -47,6 +47,12 @@ public class DAOFake implements DAO {
 		return list.size();
 	}
 
+	@Override
+	public Vector<Alumno> getAll() {
+		// TODO Auto-generated method stub
+		return list;
+	}
+
 
 
 }

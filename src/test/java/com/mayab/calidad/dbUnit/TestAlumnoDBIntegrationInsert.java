@@ -18,6 +18,8 @@ import org.dbunit.operation.DatabaseOperation;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.Vector;
+
 import org.dbunit.PropertiesBasedJdbcDatabaseTester;
 import org.dbunit.database.IDatabaseConnection;
 
@@ -154,7 +156,33 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		
 		connection.close();	
 	}
+	@Test
+	public void testGetAll() throws Exception {
+		IDatabaseConnection connection= getConnection();
+		AlumnoOracle alumno = new AlumnoOracle();
+		Alumno a1 = new Alumno(9);
+		a1.setNombre("Jorge");
+		a1.setPromedio(9.9);
+		
+		alumno.addAlumno(a1);
+		
+		IDataSet databaseDataSet = getConnection().createDataSet();			
+		Vector<Alumno> actualTable =  alumno.getAll();
+		
+		IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("src/resources/insert_result.xml"));
+		ITable expectedTable = expectedDataSet.getTable("alumno");
+		// Assert actual database table match expected table
+		
 	
+		for(int i = 0; i<actualTable.size();i++) {
+			
+			assertEquals(expectedTable.getValue(i, "id"), Integer.toString(actualTable.get(i).getId()));
+			assertEquals(expectedTable.getValue(i, "nombre"), actualTable.get(i).getNombre());
+			
+		}
+		
+		connection.close();	
+	}
 	
 	@Override
 	protected IDataSet getDataSet() throws Exception {

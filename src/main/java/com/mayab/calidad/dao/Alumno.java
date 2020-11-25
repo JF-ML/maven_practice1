@@ -13,8 +13,8 @@ public class Alumno {
 	public double promedio;
 	
 	public Alumno() {
-		this.id=1;
-		this.nombre="john";
+		this.id=9;
+		this.nombre="Jorge";
 		this.email= "xxx@.com";
 		this.edad = 18;
 		this.promedio = 0.0;
