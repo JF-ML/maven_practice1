@@ -55,7 +55,7 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 	@After
 	public void tearDown() throws Exception{
 		
-	}
+	}/*
 	@Test
 	public void testInsert() throws Exception {
 		//Fetch database data after executing your code
@@ -84,7 +84,7 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		
 		connection.close();		
 
-	}/*
+	}*/
 	@Test
 	public void testInsert2() throws Exception {
 		//Fetch database data after executing your code
@@ -101,7 +101,7 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		
 		connection.close();		
 
-	}
+	}/*
 	@Test
 	public void testDelete() throws Exception{
 		IDatabaseConnection connection= getConnection();
