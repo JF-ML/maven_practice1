@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.util.Vector;
 
 import org.dbunit.PropertiesBasedJdbcDatabaseTester;
+import org.dbunit.database.DatabaseConfig;
 import org.dbunit.database.IDatabaseConnection;
 
 
@@ -34,12 +35,16 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_CONNECTION_URL, "jdbc:oracle:thin:@localhost:1521:xe");
 		System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_USERNAME, "travis");
 		System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_PASSWORD, "travis");
+		
+		
 	}
 
+	
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
 		IDatabaseConnection connection= getConnection();
+		 
 		try {
 			DatabaseOperation.CLEAN_INSERT.execute(connection, getDataSet());
 		}finally {
@@ -63,10 +68,10 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		alumno.addAlumno(a1);
 
 		IDataSet databaseDataSet = getConnection().createDataSet();			
-		ITable actualTable = databaseDataSet.getTable("alumno");
+		ITable actualTable = databaseDataSet.getTable("ALUMNO");
 		
 		IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("src/resources/insert_result.xml"));
-		ITable expectedTable = expectedDataSet.getTable("alumno");
+		ITable expectedTable = expectedDataSet.getTable("ALUMNO");
 
 		Assertion.assertEquals(expectedTable, actualTable);
 		
@@ -81,9 +86,9 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		Alumno a1 = new Alumno(9);
 		a1.setNombre("Jorge");
 		a1.setPromedio(9.9);
-		int n =connection.getRowCount("alumno") + 1;
+		int n =connection.getRowCount("ALUMNO") + 1;
 		alumno.addAlumno(a1);
-		assertEquals(n, connection.getRowCount("alumno"));	
+		assertEquals(n, connection.getRowCount("ALUMNO"));	
 		
 		
 		
@@ -100,15 +105,15 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		a1.setPromedio(9.9);
 		alumno.addAlumno(a1);
 		alumno.addAlumno(a2);
-		int n =connection.getRowCount("alumno")-1;
+		int n =connection.getRowCount("ALUMNO")-1;
 		
 		
 		alumno.deleteAlumno(a2);
 		IDataSet databaseDataSet = getConnection().createDataSet();			
-		ITable actualTable = databaseDataSet.getTable("alumno");
+		ITable actualTable = databaseDataSet.getTable("ALUMNO");
 		
 		IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("src/resources/insert_result.xml"));
-		ITable expectedTable = expectedDataSet.getTable("alumno");
+		ITable expectedTable = expectedDataSet.getTable("ALUMNO");
 		// Assert actual database table match expected table
 		
 		Assertion.assertEquals(expectedTable, actualTable);
@@ -133,10 +138,10 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		
 		
 		IDataSet databaseDataSet = getConnection().createDataSet();			
-		ITable actualTable = databaseDataSet.getTable("alumno");
+		ITable actualTable = databaseDataSet.getTable("ALUMNO");
 		
 		IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("src/resources/update_result.xml"));
-		ITable expectedTable = expectedDataSet.getTable("alumno");
+		ITable expectedTable = expectedDataSet.getTable("ALUMNO");
 		// Assert actual database table match expected table
 		Assertion.assertEquals(expectedTable, actualTable);
 		
@@ -151,7 +156,7 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		
 		
 		
-		assertEquals(n, connection.getRowCount("alumno"));
+		assertEquals(n, connection.getRowCount("ALUMNO"));
 		
 		connection.close();	
 	}
@@ -169,14 +174,14 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		Vector<Alumno> actualTable =  alumno.getAll();
 		
 		IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("src/resources/insert_result.xml"));
-		ITable expectedTable = expectedDataSet.getTable("alumno");
+		ITable expectedTable = expectedDataSet.getTable("ALUMNO");
 		// Assert actual database table match expected table
 		
 	
 		for(int i = 0; i<actualTable.size();i++) {
 			
-			assertEquals(expectedTable.getValue(i, "id"), Integer.toString(actualTable.get(i).getId()));
-			assertEquals(expectedTable.getValue(i, "nombre"), actualTable.get(i).getNombre());
+			assertEquals(expectedTable.getValue(i, "ID"), Integer.toString(actualTable.get(i).getId()));
+			assertEquals(expectedTable.getValue(i, "NOMBRE"), actualTable.get(i).getNombre());
 			
 		}
 		

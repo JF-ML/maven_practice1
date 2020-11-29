@@ -23,7 +23,7 @@ public class AlumnoOracle implements DAO {
 			Connection con = getConnection();
 			
 			PreparedStatement ps = con.prepareStatement(
-					"insert into alumno(id,nombre,edad,promedio,email) values (?,?,?,?,?)");
+					"insert into ALUMNO(ID,NOMBRE,EDAD,PROMEDIO,EMAIL) values (?,?,?,?,?)");
 			ps.setInt(1,n.getId());
 			ps.setString(2,n.getNombre());
 			ps.setInt(3,n.getEdad());
@@ -46,7 +46,7 @@ public class AlumnoOracle implements DAO {
 			Connection con = getConnection();
 			
 			PreparedStatement ps = con.prepareStatement(
-					"Delete From alumno Where id = ?");
+					"Delete From ALUMNO Where ID = ?");
 			ps.setInt(1,n.getId());
 			
 			
@@ -65,7 +65,7 @@ public class AlumnoOracle implements DAO {
 			Connection con = getConnection();
 			
 			PreparedStatement ps = con.prepareStatement(
-					"update alumno set promedio  = ? Where id = ?");
+					"update ALUMNO set PROMEDIO  = ? Where ID = ?");
 			ps.setDouble(1,promedio);
 			ps.setInt(2,n.getId());
 			
@@ -85,7 +85,7 @@ public class AlumnoOracle implements DAO {
 		try {
 			Connection con = getConnection();
 			Statement statement = con.createStatement();
-			ResultSet result = statement.executeQuery("SELECT COUNT(*) AS count FROM alumno");
+			ResultSet result = statement.executeQuery("SELECT COUNT(*) AS count FROM ALUMNO");
 			
 			while(result.next()){
 				n = result.getInt("count");
@@ -106,7 +106,7 @@ public class AlumnoOracle implements DAO {
 		try {
 			Connection con = getConnection();
 			Statement statement = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			ResultSet result = statement.executeQuery("SELECT * FROM alumno");
+			ResultSet result = statement.executeQuery("SELECT * FROM ALUMNO");
 			result.last();
 			int size = result.getRow();
 			result.first();
@@ -116,11 +116,11 @@ public class AlumnoOracle implements DAO {
             	list.add(new Alumno());
 	            	if(result.next())
 	            	{
-		            	list.get(i).setId(result.getInt("id"));
-		            	list.get(i).setNombre(result.getString("nombre"));
-		            	list.get(i).setEdad(result.getInt("edad"));
-		            	list.get(i).setPromedio(result.getFloat("promedio"));
-		    			list.get(i).setEmail(result.getString("email"));
+		            	list.get(i).setId(result.getInt("ID"));
+		            	list.get(i).setNombre(result.getString("NOMBRE"));
+		            	list.get(i).setEdad(result.getInt("EDAD"));
+		            	list.get(i).setPromedio(result.getFloat("PROMEDIO"));
+		    			list.get(i).setEmail(result.getString("EMAIL"));
 		    			
 	            	}
         	}
