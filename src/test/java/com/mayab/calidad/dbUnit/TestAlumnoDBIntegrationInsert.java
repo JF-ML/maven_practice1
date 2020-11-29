@@ -62,9 +62,16 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		IDatabaseConnection connection= getConnection();
 		AlumnoOracle alumno = new AlumnoOracle();
 		Alumno a1 = new Alumno(9);
+		Alumno a2 = new Alumno(1);
+		Alumno a3 = new Alumno(2);
 		a1.setNombre("Jorge");
 		a1.setPromedio(9.9);
-
+		a2.setNombre("Pedro");
+		a2.setPromedio(7.8);
+		a3.setNombre("Fernando");
+		a3.setPromedio(8.5);
+		alumno.addAlumno(a2);
+		alumno.addAlumno(a3);
 		alumno.addAlumno(a1);
 
 		IDataSet databaseDataSet = getConnection().createDataSet();			

@@ -1,6 +1,6 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <dataset>
 <ALUMNO ID = "1" NOMBRE ="Pedro" PROMEDIO ="7.8" EMAIL ="xxx@.com" EDAD ="18"/>
-<ALUMNO ID = "2" NOMBRE ="Fernando" PROMEDIO ="8.5" EMAIL ="fer@.com" EDAD ="20"/>
+<ALUMNO ID = "2" NOMBRE ="Fernando" PROMEDIO ="8.5" EMAIL ="xxx@.com" EDAD ="18"/>
 <ALUMNO ID = "9" NOMBRE ="Jorge" PROMEDIO ="9.9" EMAIL ="xxx@.com" EDAD ="18"/>
 </dataset>
