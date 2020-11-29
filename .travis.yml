@@ -10,6 +10,6 @@ before_install:
   - bash ./accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh
 
 script: 
-        bash ./db_setup.sh
-        mvn -Dtest=TestDAO,TestAlumnoDBIntegrationInsert test
+        bash ./db_setup.sh;
+        mvn -Dtest=TestDAO,TestAlumnoDBIntegrationInsert test;
          
