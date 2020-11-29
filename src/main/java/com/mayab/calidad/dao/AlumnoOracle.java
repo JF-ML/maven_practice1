@@ -46,7 +46,7 @@ public class AlumnoOracle implements DAO {
 			Connection con = getConnection();
 			
 			PreparedStatement ps = con.prepareStatement(
-					"Delete From Alumno Where id = ?");
+					"Delete From alumno Where id = ?");
 			ps.setInt(1,n.getId());
 			
 			
