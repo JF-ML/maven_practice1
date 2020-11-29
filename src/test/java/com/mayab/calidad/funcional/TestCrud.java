@@ -26,27 +26,27 @@ public class TestCrud {
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
-
-  @Test
-  public void TestaddSucess() throws Exception {
-    driver.get("https://mern-crud.herokuapp.com/");
-    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/button")).click();
-    driver.findElement(By.name("name")).click();
-    driver.findElement(By.name("name")).clear();
-    driver.findElement(By.name("name")).sendKeys("Jorge Marquez");
-    driver.findElement(By.name("email")).click();
-    driver.findElement(By.name("email")).clear();
-    driver.findElement(By.name("email")).sendKeys("jfmarquez98@gmail.com");
-    driver.findElement(By.name("age")).click();
-    driver.findElement(By.name("age")).clear();
-    driver.findElement(By.name("age")).sendKeys("22");
-    driver.findElement(By.xpath("//div[3]/div[2]/div")).click();
-    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
-    driver.findElement(By.xpath("//form/button")).click();
-    pause(4000);
-    assertEquals("Successfully added!", driver.findElement(By.xpath("//div[4]/div/p")).getText());
-  }
-  
+	  /*
+	  @Test
+	  public void TestaddSucess() throws Exception {
+	    driver.get("https://mern-crud.herokuapp.com/");
+	    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/button")).click();
+	    driver.findElement(By.name("name")).click();
+	    driver.findElement(By.name("name")).clear();
+	    driver.findElement(By.name("name")).sendKeys("Jorge Marquez");
+	    driver.findElement(By.name("email")).click();
+	    driver.findElement(By.name("email")).clear();
+	    driver.findElement(By.name("email")).sendKeys("jfmarquez98@gmail.com");
+	    driver.findElement(By.name("age")).click();
+	    driver.findElement(By.name("age")).clear();
+	    driver.findElement(By.name("age")).sendKeys("22");
+	    driver.findElement(By.xpath("//div[3]/div[2]/div")).click();
+	    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
+	    driver.findElement(By.xpath("//form/button")).click();
+	    pause(4000);
+	    assertEquals("Successfully added!", driver.findElement(By.xpath("//div[4]/div/p")).getText());
+	  }*/
+  /*
   @Test
   public void TestaddFail() throws Exception {
 	  	
@@ -80,8 +80,76 @@ public class TestCrud {
 	    
 	    pause(5000);
 	    assertEquals("That email is already taken.", driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/form/div[5]/div/p")).getText());
-	  }
-  
+	  }*/
+  	
+	  @Test
+	  public void testDelete() throws Exception {
+	    driver.get("https://mern-crud.herokuapp.com/");
+	    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/button")).click();
+	    driver.findElement(By.name("name")).click();
+	    driver.findElement(By.name("name")).clear();
+	    driver.findElement(By.name("name")).sendKeys("Jorge");
+	    driver.findElement(By.name("email")).click();
+	    driver.findElement(By.name("email")).clear();
+	    driver.findElement(By.name("email")).sendKeys("jfmarquez98@gmail.com");
+	    driver.findElement(By.name("age")).click();
+	    driver.findElement(By.name("age")).clear();
+	    driver.findElement(By.name("age")).sendKeys("22");
+	    driver.findElement(By.xpath("//div[3]/div[2]/div")).click();
+	    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
+	    driver.findElement(By.xpath("//form/button")).click();
+	    driver.findElement(By.xpath("//i")).click();
+	    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/button")).click();
+	    driver.findElement(By.name("name")).click();
+	    driver.findElement(By.name("name")).clear();
+	    driver.findElement(By.name("name")).sendKeys("Fernando");
+	    driver.findElement(By.xpath("//form")).click();
+	    driver.findElement(By.name("email")).click();
+	    driver.findElement(By.name("email")).clear();
+	    driver.findElement(By.name("email")).sendKeys("lopez@gmail.com");
+	    driver.findElement(By.name("age")).click();
+	    driver.findElement(By.name("age")).clear();
+	    driver.findElement(By.name("age")).sendKeys("20");
+	    driver.findElement(By.xpath("//div[3]/div[2]/div")).click();
+	    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
+	    driver.findElement(By.xpath("//form/button")).click();
+	    driver.findElement(By.xpath("//i")).click();
+	    pause(3000);
+	    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/table/tbody/tr/td[5]/button[2]")).click();
+	    driver.findElement(By.xpath("//div[3]/button")).click();
+	    pause(3000);
+	    assertEquals("Jorge",driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/table/tbody/tr[1]/td[1]")).getText());
+
+	   
+	  }/*
+	  @Test
+	  public void testUpdate() throws Exception {
+	    driver.get("https://mern-crud.herokuapp.com/");
+	    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/button")).click();
+	    driver.findElement(By.name("name")).click();
+	    driver.findElement(By.name("name")).clear();
+	    driver.findElement(By.name("name")).sendKeys("Jorge");
+	    driver.findElement(By.xpath("//form")).click();
+	    driver.findElement(By.name("email")).click();
+	    driver.findElement(By.name("email")).clear();
+	    driver.findElement(By.name("email")).sendKeys("marquez@gmail.com");
+	    driver.findElement(By.name("age")).click();
+	    driver.findElement(By.name("age")).clear();
+	    driver.findElement(By.name("age")).sendKeys("20");
+	    driver.findElement(By.xpath("//div[3]/div[2]/div")).click();
+	    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
+	    driver.findElement(By.xpath("//form/button")).click();
+	    driver.findElement(By.xpath("//i")).click();
+	    pause(1000);
+	    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/table/tbody/tr/td[5]/button")).click();
+	    driver.findElement(By.name("email")).click();
+	    driver.findElement(By.name("email")).clear();
+	    driver.findElement(By.name("email")).sendKeys("correo@mail.com");
+	    driver.findElement(By.xpath("//form/button")).click();
+	    pause(4000);
+	    assertEquals("Successfully updated!",driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/form/div[4]/div/p")).getText());
+	    
+	  }*/
   @After
   public void tearDown() throws Exception {
     driver.quit();

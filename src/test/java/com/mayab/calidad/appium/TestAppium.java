@@ -29,7 +29,7 @@ public class TestAppium {
 	  desiredCapabilities.setCapability("appActivity", "com.mayab.calidad.calculator.MainActivity");
 	  desiredCapabilities.setCapability("ensureWebviewsHavePages", true);
 
-	  URL remoteUrl = new URL("http://localhost:4723/wd/hub");
+	  URL remoteUrl = new URL("http://localhost:80/wd/hub");
 	  driver = new AndroidDriver(remoteUrl, desiredCapabilities);
   }
   

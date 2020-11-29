@@ -62,7 +62,6 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 
 		alumno.addAlumno(a1);
 
-		
 		IDataSet databaseDataSet = getConnection().createDataSet();			
 		ITable actualTable = databaseDataSet.getTable("alumno");
 		
