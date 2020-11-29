@@ -10,7 +10,7 @@ public class AlumnoOracle implements DAO {
 		 Connection con=null;  
 	        try{  
 	            Class.forName("oracle.jdbc.driver.OracleDriver");  
-	            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","dbunit","dbunit");  
+	            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","travis","travis");  
 	        }catch(Exception e){System.out.println(e);}  
 	        return con;  
 	}

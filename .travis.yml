@@ -11,5 +11,5 @@ before_install:
 
 script: 
         - bash ./db_setup.sh
-        - travis_wait mvn -Dtest=TestDAO,TestAlumnoDBIntegrationInsert test
+        - mvn -Dtest=TestDAO,TestAlumnoDBIntegrationInsert test
          
