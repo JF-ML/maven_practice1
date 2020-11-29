@@ -77,7 +77,7 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		
 		connection.close();		
 
-	}
+	}/*
 	@Test
 	public void testInsert2() throws Exception {
 		//Fetch database data after executing your code
@@ -186,7 +186,7 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		}
 		
 		connection.close();	
-	}
+	}*/
 	
 	@Override
 	protected IDataSet getDataSet() throws Exception {
