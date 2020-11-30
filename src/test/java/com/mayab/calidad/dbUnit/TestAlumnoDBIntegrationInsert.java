@@ -91,13 +91,13 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		a1.setPromedio(9.9);
 		int n =connection.getRowCount("ALUMNO") + 1;
 		alumno.addAlumno(a1);
-		assertEquals(100, connection.getRowCount("ALUMNO"));	
+		assertEquals(n, connection.getRowCount("ALUMNO"));	
 		
 		
 		
 		connection.close();		
 
-	}/*
+	}
 	@Test
 	public void testDelete() throws Exception{
 		IDatabaseConnection connection= getConnection();
