@@ -3,7 +3,7 @@ dist: trusty
 
 sudo: required
 addons:
-   chrome: stable
+   chrome: 80
 
 
 
@@ -26,5 +26,5 @@ before_script:
 - sleep 3 #give xvfb time to start  
 script: 
         - bash ./db_setup.sh
-        - mvn -Dtest=TestDAO,TestAlumnoDBIntegrationInsert test
+        - mvn -Dtest=TestDAO,TestCrud test
          
