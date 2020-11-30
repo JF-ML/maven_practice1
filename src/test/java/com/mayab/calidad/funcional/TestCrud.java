@@ -21,7 +21,7 @@ public class TestCrud {
 
   @Before
   public void setUp() throws Exception {
-	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Jorge Marquez\\Desktop\\Escuela\\chromedriver.exe");  
+	System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");  
     driver = new ChromeDriver();
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -121,7 +121,7 @@ public class TestCrud {
 	    assertEquals("Jorge",driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/table/tbody/tr[1]/td[1]")).getText());
 
 	   
-	  }/*
+	  }
 	  @Test
 	  public void testUpdate() throws Exception {
 	    driver.get("https://mern-crud.herokuapp.com/");
@@ -149,7 +149,7 @@ public class TestCrud {
 	    pause(4000);
 	    assertEquals("Successfully updated!",driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/form/div[4]/div/p")).getText());
 	    
-	  }*/
+	  }
   @After
   public void tearDown() throws Exception {
     driver.quit();
