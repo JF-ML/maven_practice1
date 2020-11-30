@@ -124,7 +124,7 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		
 		connection.close();
 	}
-	/*
+	
 	@Test
 	public void testUpdate() throws Exception {
 		IDatabaseConnection connection= getConnection();
@@ -160,7 +160,7 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		assertEquals(n, connection.getRowCount("ALUMNO"));
 		
 		connection.close();	
-	}
+	}/*
 	@Test
 	public void testGetAll() throws Exception {
 		IDatabaseConnection connection= getConnection();
