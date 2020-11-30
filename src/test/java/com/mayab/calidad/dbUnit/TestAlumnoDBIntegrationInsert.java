@@ -79,6 +79,8 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		connection.close();		
 
 	}*/
+	
+	
 	@Test
 	public void testInsert2() throws Exception {
 		//Fetch database data after executing your code
@@ -89,13 +91,13 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		a1.setPromedio(9.9);
 		int n =connection.getRowCount("ALUMNO") + 1;
 		alumno.addAlumno(a1);
-		assertEquals(n, connection.getRowCount("ALUMNO"));	
+		assertEquals(100, connection.getRowCount("ALUMNO"));	
 		
 		
 		
 		connection.close();		
 
-	}
+	}/*
 	@Test
 	public void testDelete() throws Exception{
 		IDatabaseConnection connection= getConnection();
