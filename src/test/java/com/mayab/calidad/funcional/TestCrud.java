@@ -28,8 +28,7 @@ public class TestCrud {
     driver = new ChromeDriver();
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    Date date = new Date();
-    DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    
     
   }
 	  
@@ -42,7 +41,7 @@ public class TestCrud {
 	    driver.findElement(By.name("name")).sendKeys("Jorge");
 	    driver.findElement(By.name("email")).click();
 	    driver.findElement(By.name("email")).clear();
-	    driver.findElement(By.name("email")).sendKeys("98@gmail.com");
+	    driver.findElement(By.name("email")).sendKeys("jf98@gmail.com");
 	    driver.findElement(By.name("age")).click();
 	    driver.findElement(By.name("age")).clear();
 	    driver.findElement(By.name("age")).sendKeys("22");
@@ -128,27 +127,6 @@ public class TestCrud {
 
 	   
 	  }
-	  @Test
-	  public void testRetrieve() throws Exception {
-		  	driver.get("https://mern-crud.herokuapp.com/");
-		    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/button")).click();
-		    driver.findElement(By.name("name")).click();
-		    driver.findElement(By.name("name")).clear();
-		    driver.findElement(By.name("name")).sendKeys("Jorge");
-		    driver.findElement(By.name("email")).click();
-		    driver.findElement(By.name("email")).clear();
-		    driver.findElement(By.name("email")).sendKeys("jf@gmail.com");
-		    driver.findElement(By.name("age")).click();
-		    driver.findElement(By.name("age")).clear();
-		    driver.findElement(By.name("age")).sendKeys("22");
-		    driver.findElement(By.xpath("//div[3]/div[2]/div")).click();
-		    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
-		    driver.findElement(By.xpath("//form/button")).click();
-		    driver.findElement(By.xpath("//i")).click();
-		    pause(3000);
-		    assertEquals("Jorge",driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/table/tbody/tr[1]/td[1]")).getText());
-		    
-		  }
 	  @Test
 	  public void testUpdate() throws Exception {
 	    driver.get("https://mern-crud.herokuapp.com/");
