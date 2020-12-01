@@ -6,7 +6,8 @@ addons:
    chrome: stable
 
 
-
+services:
+- xvfb
 env:
   - ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe ORACLE_SID=XE
 
@@ -14,6 +15,8 @@ before_install:
   - wget https://raw.githubusercontent.com/Vincit/travis-oracledb-xe/master/accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh
   - bash ./accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh
   - sudo apt-get install libgconf-2-4
+  - export DISPLAY=:99.0
+  - sleep 3
 install: true  
   - wget -N http://chromedriver.storage.googleapis.com/2.27/chromedriver_linux64.zip -P ~/
   - unzip ~/chromedriver_linux64.zip -d ~/
@@ -29,9 +32,12 @@ before_script:
 - sudo apt-get --only-upgrade install google-chrome-stable
 - sudo cp chromedriver /usr/local/bin/.
 - sudo chmod +x /usr/local/bin/chromedriver
-- "export DISPLAY=:99.0"
-- sleep 3 #give xvfb time to start  
+
 script: 
         - bash ./db_setup.sh
         - mvn -Dtest=TestDAO,TestCrud test
          
+Notifications:
+email:
+    on_success: always
+    on_failure: never
