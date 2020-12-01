@@ -39,7 +39,7 @@ public class TestCrud {
 	    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/button")).click();
 	    driver.findElement(By.name("name")).click();
 	    driver.findElement(By.name("name")).clear();
-	    driver.findElement(By.name("name")).sendKeys("Jorge Marquez");
+	    driver.findElement(By.name("name")).sendKeys("Jorge");
 	    driver.findElement(By.name("email")).click();
 	    driver.findElement(By.name("email")).clear();
 	    driver.findElement(By.name("email")).sendKeys("jfmarquez98@gmail.com");
