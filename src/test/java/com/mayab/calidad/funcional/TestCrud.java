@@ -128,11 +128,12 @@ public class TestCrud {
 	    assertEquals("Jorge",driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/table/tbody/tr[1]/td[1]")).getText());
 
 	   
-	  }/*
+	  }
 	  @Test
 	  public void testRetrieve() throws Exception {
 		  	driver.get("https://mern-crud.herokuapp.com/");
 		    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/button")).click();
+		    pause(4000);
 		    driver.findElement(By.name("name")).click();
 		    driver.findElement(By.name("name")).clear();
 		    driver.findElement(By.name("name")).sendKeys("Jorge");
@@ -150,7 +151,7 @@ public class TestCrud {
 		    assertEquals("Jorge",driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/table/tbody/tr[1]/td[1]")).getText());
 
 		    
-		  }*/
+		  }
 	  @Test
 	  public void testUpdate() throws Exception {
 	    driver.get("https://mern-crud.herokuapp.com/");
