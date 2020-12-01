@@ -38,7 +38,7 @@ before_script:
 script: 
 
         - bash ./db_setup.sh
-
+        - mvn clean
         - mvn -Dtest=TestDAO,TestCrud test
          
 Notifications:
