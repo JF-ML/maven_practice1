@@ -19,6 +19,7 @@ before_install:
   - sudo apt-get install libgconf-2-4
   - export DISPLAY=:99.0
   - sleep 3
+  
   - export CHROME_BIN=/usr/bin/google-chrome
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
@@ -37,7 +38,7 @@ before_script:
 script: 
 
         - bash ./db_setup.sh
-        - mvn clean
+
         - mvn -Dtest=TestDAO,TestCrud test
          
 Notifications:

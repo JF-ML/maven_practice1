@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.util.regex.Pattern;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -18,15 +21,19 @@ public class TestCrud {
   private String baseUrl;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
-
+  private String mail;
   @Before
   public void setUp() throws Exception {
 	System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");  
     driver = new ChromeDriver();
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    Date date = new Date();
+    DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    mail=df.format(date);
+    
   }
-	  /*
+	  
 	  @Test
 	  public void TestaddSucess() throws Exception {
 	    driver.get("https://mern-crud.herokuapp.com/");
@@ -36,7 +43,7 @@ public class TestCrud {
 	    driver.findElement(By.name("name")).sendKeys("Jorge Marquez");
 	    driver.findElement(By.name("email")).click();
 	    driver.findElement(By.name("email")).clear();
-	    driver.findElement(By.name("email")).sendKeys("jfmarquez98@gmail.com");
+	    driver.findElement(By.name("email")).sendKeys("jf"+mail+"@gmail.com");
 	    driver.findElement(By.name("age")).click();
 	    driver.findElement(By.name("age")).clear();
 	    driver.findElement(By.name("age")).sendKeys("22");
@@ -45,7 +52,7 @@ public class TestCrud {
 	    driver.findElement(By.xpath("//form/button")).click();
 	    pause(4000);
 	    assertEquals("Successfully added!", driver.findElement(By.xpath("//div[4]/div/p")).getText());
-	  }*/
+	  }
   /*
   @Test
   public void TestaddFail() throws Exception {
@@ -91,7 +98,7 @@ public class TestCrud {
 	    driver.findElement(By.name("name")).sendKeys("Jorge");
 	    driver.findElement(By.name("email")).click();
 	    driver.findElement(By.name("email")).clear();
-	    driver.findElement(By.name("email")).sendKeys("jfmarquez98@gmail.com");
+	    driver.findElement(By.name("email")).sendKeys("jf"+mail+"@gmail.com");
 	    driver.findElement(By.name("age")).click();
 	    driver.findElement(By.name("age")).clear();
 	    driver.findElement(By.name("age")).sendKeys("22");
@@ -106,7 +113,7 @@ public class TestCrud {
 	    driver.findElement(By.xpath("//form")).click();
 	    driver.findElement(By.name("email")).click();
 	    driver.findElement(By.name("email")).clear();
-	    driver.findElement(By.name("email")).sendKeys("lopez@gmail.com");
+	    driver.findElement(By.name("email")).sendKeys("lopez"+mail+"@gmail.com");
 	    driver.findElement(By.name("age")).click();
 	    driver.findElement(By.name("age")).clear();
 	    driver.findElement(By.name("age")).sendKeys("20");
@@ -132,7 +139,7 @@ public class TestCrud {
 	    driver.findElement(By.xpath("//form")).click();
 	    driver.findElement(By.name("email")).click();
 	    driver.findElement(By.name("email")).clear();
-	    driver.findElement(By.name("email")).sendKeys("marquez@gmail.com");
+	    driver.findElement(By.name("email")).sendKeys("marquez"+mail+"@gmail.com");
 	    driver.findElement(By.name("age")).click();
 	    driver.findElement(By.name("age")).clear();
 	    driver.findElement(By.name("age")).sendKeys("20");
@@ -144,7 +151,7 @@ public class TestCrud {
 	    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/table/tbody/tr/td[5]/button")).click();
 	    driver.findElement(By.name("email")).click();
 	    driver.findElement(By.name("email")).clear();
-	    driver.findElement(By.name("email")).sendKeys("correo@mail.com");
+	    driver.findElement(By.name("email")).sendKeys("correo"+mail+"@mail.com");
 	    driver.findElement(By.xpath("//form/button")).click();
 	    pause(4000);
 	    assertEquals("Successfully updated!",driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/form/div[4]/div/p")).getText());
