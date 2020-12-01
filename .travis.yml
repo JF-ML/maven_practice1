@@ -17,16 +17,16 @@ before_install:
   - sudo apt-get install libgconf-2-4
   - export DISPLAY=:99.0
   - sleep 3
-install: true  
-  - wget -N http://chromedriver.storage.googleapis.com/2.27/chromedriver_linux64.zip -P ~/
-  - unzip ~/chromedriver_linux64.zip -d ~/
-  - rm ~/chromedriver_linux64.zip
-  - sudo mv -f ~/chromedriver /usr/local/share/chromedriver
-  - sudo chmod +x /usr/local/share/chromedriver
-  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+  - export CHROME_BIN=/usr/bin/google-chrome
+  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  - sudo dpkg -i google-chrome*.deb
+   - wget https://chromedriver.storage.googleapis.com/2.38/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip
+  - sudo cp chromedriver /usr/bin
+
   
 before_script:
-- wget http://chromedriver.storage.googleapis.com/2.27/chromedriver_linux64.zip
+- wget http://chromedriver.storage.googleapis.com/2.38/chromedriver_linux64.zip
 - unzip chromedriver_linux64.zip
 - sudo apt-get install libnss3
 - sudo apt-get --only-upgrade install google-chrome-stable
