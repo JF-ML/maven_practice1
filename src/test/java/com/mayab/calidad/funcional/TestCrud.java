@@ -36,6 +36,7 @@ public class TestCrud {
 	  public void TestaddSucess() throws Exception {
 	    driver.get("https://mern-crud.herokuapp.com/");
 	    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/button")).click();
+	    pause(4000);
 	    driver.findElement(By.name("name")).click();
 	    driver.findElement(By.name("name")).clear();
 	    driver.findElement(By.name("name")).sendKeys("Jorge");
@@ -91,6 +92,7 @@ public class TestCrud {
 	  public void testDelete() throws Exception {
 	    driver.get("https://mern-crud.herokuapp.com/");
 	    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/button")).click();
+	    pause(4000);
 	    driver.findElement(By.name("name")).click();
 	    driver.findElement(By.name("name")).clear();
 	    driver.findElement(By.name("name")).sendKeys("Jorge");
