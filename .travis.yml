@@ -40,8 +40,8 @@ script:
         - bash ./db_setup.sh
         - mvn clean
         - mvn -Dtest=TestDAO,TestCrud,TestAlumnoDBIntegrationInsert test
-         
 Notifications:
-email:
-    on_success: always
-    on_failure: never
+   email: false
+   
+      
+      
