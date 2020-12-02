@@ -29,7 +29,7 @@ public class TestDAO {
 		int num;
 		num = fake.list.size();
 		fake.addAlumno(alumno);
-		assertThat(100,is(fake.list.size()));
+		assertThat(num+1,is(fake.list.size()));
 		
 	}
 	@Test
@@ -37,22 +37,22 @@ public class TestDAO {
 		int num;
 		num = fake.list.size();
 		fake.deleteAlumno(a1);
-		assertThat(100,is(fake.list.size()));
+		assertThat(num-1,is(fake.list.size()));
 	}
 	@Test 
 	public void UpdateTest() {
 		fake.updatePromedio(a1,9.9);
-		assertThat(100,is(a1.getPromedio()));
+		assertThat(9.9,is(a1.getPromedio()));
 	}
 	@Test 
 	public void numberTest() {
 		int n = fake.numberAlumno();
-		assertThat(100,is(n));
+		assertThat(1,is(n));
 	}
 	@Test
 	public void getAllTest() {
 		Vector<Alumno> list = fake.getAll();
-		assertThat(100,is(list.get(list.indexOf(a1)).getId()));
+		assertThat(a1.getId(),is(list.get(list.indexOf(a1)).getId()));
 		assertThat(a1.getNombre(),is(list.get(list.indexOf(a1)).getNombre()));
 	}
 	/*

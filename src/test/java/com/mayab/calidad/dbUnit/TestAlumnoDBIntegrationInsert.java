@@ -91,7 +91,7 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		a1.setPromedio(9.9);
 		int n =connection.getRowCount("ALUMNO") + 1;
 		alumno.addAlumno(a1);
-		assertEquals(100, connection.getRowCount("ALUMNO"));	
+		assertEquals(n, connection.getRowCount("ALUMNO"));	
 		
 		
 		
@@ -120,7 +120,7 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		// Assert actual database table match expected table
 		
 		//Assertion.assertEquals(expectedTable, actualTable);
-		assertEquals(100, connection.getRowCount("alumno"));	
+		assertEquals(n, connection.getRowCount("alumno"));	
 		
 		
 		
@@ -137,7 +137,7 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		
 		alumno.addAlumno(a1);
 		
-		alumno.updatePromedio(a1, 8.9);
+		alumno.updatePromedio(a1, 9.9);
 		
 		
 		IDataSet databaseDataSet = getConnection().createDataSet();			
@@ -159,7 +159,7 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		
 		
 		
-		assertEquals(100, connection.getRowCount("ALUMNO"));
+		assertEquals(n, connection.getRowCount("ALUMNO"));
 		
 		connection.close();	
 	}
@@ -169,7 +169,7 @@ public class TestAlumnoDBIntegrationInsert extends DBTestCase{
 		AlumnoOracle alumno = new AlumnoOracle();
 		Alumno a1 = new Alumno(9);
 		a1.setNombre("Jorge");
-		a1.setPromedio(8.9);
+		a1.setPromedio(9.9);
 		
 		alumno.addAlumno(a1);
 		

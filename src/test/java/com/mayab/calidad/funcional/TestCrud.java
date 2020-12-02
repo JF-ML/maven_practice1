@@ -50,7 +50,7 @@ public class TestCrud {
 	    driver.findElement(By.xpath("//div[2]/div/div[2]/div")).click();
 	    driver.findElement(By.xpath("//form/button")).click();
 	    pause(4000);
-	    assertEquals("Successfully ", driver.findElement(By.xpath("//div[4]/div/p")).getText());
+	    assertEquals("Successfully added!", driver.findElement(By.xpath("//div[4]/div/p")).getText());
 	  }
   /*
   @Test
@@ -125,7 +125,7 @@ public class TestCrud {
 	    driver.findElement(By.xpath("//div[@id='root']/div/div[2]/table/tbody/tr/td[5]/button[2]")).click();
 	    driver.findElement(By.xpath("//div[3]/button")).click();
 	    pause(3000);
-	    assertEquals("Jo",driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/table/tbody/tr[1]/td[1]")).getText());
+	    assertEquals("Jorge",driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/table/tbody/tr[1]/td[1]")).getText());
 
 	   
 	  }
@@ -148,7 +148,7 @@ public class TestCrud {
 		    driver.findElement(By.xpath("//form/button")).click();
 		    driver.findElement(By.xpath("//i")).click();
 		    pause(3000);
-		    assertEquals("Jo",driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/table/tbody/tr[1]/td[1]")).getText());
+		    assertEquals("Jorge",driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/table/tbody/tr[1]/td[1]")).getText());
 
 		    
 		  }
@@ -177,7 +177,7 @@ public class TestCrud {
 	    driver.findElement(By.name("email")).sendKeys("correo@mail.com");
 	    driver.findElement(By.xpath("//form/button")).click();
 	    pause(4000);
-	    assertEquals("Successfully",driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/form/div[4]/div/p")).getText());
+	    assertEquals("Successfully updated!",driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/form/div[4]/div/p")).getText());
 	    
 	  }
   @After
